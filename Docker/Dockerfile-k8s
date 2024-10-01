@@ -60,7 +60,7 @@ ENV LISTEN=''
 ENV OIDC_ENABLED=''
 ENV TRUSTED_PROXY=''
 
-ENTRYPOINT ["./Docker/entrypoint-k8s.sh"]
+ENTRYPOINT ["/var/www/FreshRSSORIG/Docker/entrypoint-k8s.sh"]
 
 EXPOSE 80
 # hadolint ignore=DL3025
