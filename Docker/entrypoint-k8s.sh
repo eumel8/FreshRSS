@@ -5,7 +5,7 @@ export OIDC_SESSION_MAX_DURATION="${OIDC_SESSION_MAX_DURATION:-27200}"
 export OIDC_SESSION_TYPE="${OIDC_SESSION_TYPE:-server-cache}"
 OIDC_SCOPES=$(echo "$OIDC_SCOPES" | tr ':' ' ')
 export OIDC_SCOPES
-cp -r /var/www/FreshRSSORIG /var/www/FreshRSS
+cp -r /var/www/FreshRSSORIG/ /var/www/FreshRSS
 
 ./cli/access-permissions.sh
 
