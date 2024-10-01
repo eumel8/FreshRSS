@@ -1,10 +1,10 @@
 #!/bin/sh
 
 # put all runtime and log data in emptyDir
-export APACHE_PID_FILE=/apache/run/apache2.pid
-export APACHE_RUN_DIR=/apache/run
-export APACHE_LOCK_DIR=/apache/run/apachelock
-export APACHE_LOG_DIR=/apache/run/apachelogs
+#export APACHE_PID_FILE=/apache/run/apache2.pid
+#export APACHE_RUN_DIR=/apache/run
+#export APACHE_LOCK_DIR=/apache/run/apachelock
+#export APACHE_LOG_DIR=/apache/run/apachelogs
 
 export OIDC_SESSION_INACTIVITY_TIMEOUT="${OIDC_SESSION_INACTIVITY_TIMEOUT:-300}"
 export OIDC_SESSION_MAX_DURATION="${OIDC_SESSION_MAX_DURATION:-27200}"
