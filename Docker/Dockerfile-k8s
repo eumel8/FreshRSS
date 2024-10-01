@@ -15,7 +15,7 @@ RUN apt-get update && \
 RUN which a2enmod >/dev/null && a2enmod -q auth_openidc
 
 RUN mkdir -p /var/www/FreshRSSORIG/ /run/apache2/
-WORKDIR /var/www/FreshRSS
+#WORKDIR /var/www/FreshRSS
 
 COPY . /var/www/FreshRSSORIG
 COPY ./Docker/*.Apache.conf /etc/apache2/sites-available/
