@@ -17,7 +17,7 @@ RUN which a2enmod >/dev/null && a2enmod -q auth_openidc
 RUN mkdir -p /var/www/FreshRSS/ /run/apache2/
 WORKDIR /var/www/FreshRSS
 
-COPY . /var/www/FreshRSS
+COPY . /var/www/FreshRSSORIG
 COPY ./Docker/*.Apache.conf /etc/apache2/sites-available/
 
 ARG FRESHRSS_VERSION
@@ -46,7 +46,7 @@ RUN sed -r -i "/^\s*(CustomLog|ErrorLog|Listen) /s/^/#/" /etc/apache2/apache2.co
 	sed -r -i "/^\s*Listen /s/^/#/" /etc/apache2/ports.conf && \
 	# Disable built-in updates when using Docker, as the full image is supposed to be updated instead.
 	sed -r -i "\\#disable_update#s#^.*#\t'disable_update' => true,#" ./config.default.php && \
-	touch /var/www/FreshRSS/Docker/env.txt && \
+	touch /var/www/FreshRSSORIG/Docker/env.txt && \
 	echo "7,37 * * * * . /var/www/FreshRSS/Docker/env.txt; \
 		su www-data -s /bin/sh -c 'php /var/www/FreshRSS/app/actualize_script.php' \
 		2>> /proc/1/fd/2 > /tmp/FreshRSS.log" > /etc/crontab.freshrss.default
