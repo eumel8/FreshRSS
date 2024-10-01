@@ -13,7 +13,7 @@ fi
 
 
 if [ ! -f '/var/www/FreshRSS/constants.php' ]; then
-	cp -r /var/www/FreshRSSORIG/ /var/www/FreshRSS
+	cp -a /var/www/FreshRSSORIG/. /var/www/FreshRSS/
 	mkdir -p /var/www/FreshRSS/data/users/_/
 	chmod -R g+w /var/www/FreshRSS/data/
 	php -f /var/www/FreshRSS/cli/prepare.php >/dev/null
