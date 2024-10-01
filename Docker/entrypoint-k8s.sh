@@ -5,13 +5,12 @@ export OIDC_SESSION_MAX_DURATION="${OIDC_SESSION_MAX_DURATION:-27200}"
 export OIDC_SESSION_TYPE="${OIDC_SESSION_TYPE:-server-cache}"
 OIDC_SCOPES=$(echo "$OIDC_SCOPES" | tr ':' ' ')
 export OIDC_SCOPES
-cp -r /var/www/FreshRSSORIG/ /var/www/FreshRSS
 
-/var/www/FreshRSS/cli/access-permissions.sh
-
-php -f /var/www/FreshRSS/cli/prepare.php >/dev/null
 
 if [ -n "$FRESHRSS_INSTALL" ]; then
+	cp -r /var/www/FreshRSSORIG/ /var/www/FreshRSS
+	/var/www/FreshRSS/cli/access-permissions.sh
+	php -f /var/www/FreshRSS/cli/prepare.php >/dev/null
 	# shellcheck disable=SC2046
 	php -f /var/www/FreshRSS/cli/do-install.php -- \
 		$(echo "$FRESHRSS_INSTALL" | sed -r 's/[\r\n]+/\n/g' | paste -s -)
