@@ -14,7 +14,7 @@ RUN apt-get update && \
 	rm -rf /var/lib/apt/lists/*
 RUN which a2enmod >/dev/null && a2enmod -q auth_openidc
 
-RUN mkdir -p /var/www/FreshRSS/ /run/apache2/
+RUN mkdir -p /var/www/FreshRSSORIG/ /run/apache2/
 WORKDIR /var/www/FreshRSS
 
 COPY . /var/www/FreshRSSORIG
