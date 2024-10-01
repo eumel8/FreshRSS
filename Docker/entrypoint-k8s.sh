@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# put all runtime and log data in emptyDir
+export APACHE_PID_FILE=/var/run/apache2$SUFFIX/apache2.pid
+export APACHE_RUN_DIR=/var/run/apache2$SUFFIX
+export APACHE_LOCK_DIR=/var/run/apache2$SUFFIX
+export APACHE_LOG_DIR=/var/run/apache2$SUFFIX
+
 export OIDC_SESSION_INACTIVITY_TIMEOUT="${OIDC_SESSION_INACTIVITY_TIMEOUT:-300}"
 export OIDC_SESSION_MAX_DURATION="${OIDC_SESSION_MAX_DURATION:-27200}"
 export OIDC_SESSION_TYPE="${OIDC_SESSION_TYPE:-server-cache}"
