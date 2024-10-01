@@ -7,13 +7,13 @@ OIDC_SCOPES=$(echo "$OIDC_SCOPES" | tr ':' ' ')
 export OIDC_SCOPES
 cp -r /var/www/FreshRSSORIG/ /var/www/FreshRSS
 
-./cli/access-permissions.sh
+/var/www/FreshRSS/cli/access-permissions.sh
 
-php -f ./cli/prepare.php >/dev/null
+php -f /var/www/FreshRSS/cli/prepare.php >/dev/null
 
 if [ -n "$FRESHRSS_INSTALL" ]; then
 	# shellcheck disable=SC2046
-	php -f ./cli/do-install.php -- \
+	php -f /var/www/FreshRSS/cli/do-install.php -- \
 		$(echo "$FRESHRSS_INSTALL" | sed -r 's/[\r\n]+/\n/g' | paste -s -)
 	EXITCODE=$?
 
@@ -29,7 +29,7 @@ fi
 
 if [ -n "$FRESHRSS_USER" ]; then
 	# shellcheck disable=SC2046
-	php -f ./cli/create-user.php -- \
+	php -f /var/www/FreshRSS/cli/create-user.php -- \
 		$(echo "$FRESHRSS_USER" | sed -r 's/[\r\n]+/\n/g' | paste -s -)
 	EXITCODE=$?
 
@@ -37,13 +37,13 @@ if [ -n "$FRESHRSS_USER" ]; then
 		echo 'ℹ️ FreshRSS user already exists; no change performed.'
 	elif [ $EXITCODE -eq 0 ]; then
 		echo '✅ FreshRSS user successfully created.'
-		./cli/list-users.php | xargs -n1 ./cli/actualize-user.php --user
+		/var/www/FreshRSS/cli/list-users.php | xargs -n1 /var/www/FreshRSS/cli/actualize-user.php --user
 	else
 		echo '❌ FreshRSS error during the creation of a user!'
 		exit $EXITCODE
 	fi
 fi
 
-./cli/access-permissions.sh
+/var/www/FreshRSS/cli/access-permissions.sh
 
 exec "$@"
