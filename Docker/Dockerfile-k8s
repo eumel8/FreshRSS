@@ -20,7 +20,7 @@ RUN rm -f /var/log/apache2/error.log && ln -s /dev/stderr /var/log/apache2/error
 
 #WORKDIR /var/www/FreshRSS
 
-RUN git clone -b 1.24.3 https://github.com/FreshRSS/FreshRSS.git
+RUN git clone -b 1.24.3 https://github.com/FreshRSS/FreshRSS.git && ls -la
 COPY FreshRSS/ /var/www/FreshRSSORIG
 COPY FreshRSS/Docker/*.Apache.conf /etc/apache2/sites-available/
 
