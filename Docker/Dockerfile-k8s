@@ -22,11 +22,10 @@ RUN rm -f /var/log/apache2/error.log && ln -s /dev/stderr /var/log/apache2/error
 
 RUN git clone -b 1.24.3 https://github.com/FreshRSS/FreshRSS.git
 RUN cp -a FreshRSS/. /var/www/FreshRSSORIG
-RUN cp FreshRSS/Docker/*.Apache.conf /etc/apache2/sites-available/
+RUN cp ./Docker/FreshRSS.Apache.conf /etc/apache2/sites-available/
 
 # special files to build k8s app
 COPY ./Docker/entrypoint-k8s.sh /var/www/FreshRSSORIG/Docker/entrypoint-k8s.sh
-COPY ./Docker/FreshRSS.Apache.conf /var/www/FreshRSSORIG/Docker/FreshRSS.Apache.conf
 
 ARG FRESHRSS_VERSION
 ARG SOURCE_COMMIT
