@@ -22,8 +22,8 @@ RUN rm -f /var/log/apache2/error.log && ln -s /dev/stderr /var/log/apache2/error
 
 RUN git clone -b 1.24.3 https://github.com/FreshRSS/FreshRSS.git
 RUN ls -la
-COPY FreshRSS/ /var/www/FreshRSSORIG
-COPY FreshRSS/Docker/*.Apache.conf /etc/apache2/sites-available/
+RUN cp -a FreshRSS/ /var/www/FreshRSSORIG
+RUN cp FreshRSS/Docker/*.Apache.conf /etc/apache2/sites-available/
 
 ARG FRESHRSS_VERSION
 ARG SOURCE_COMMIT
