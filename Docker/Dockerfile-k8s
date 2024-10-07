@@ -6,7 +6,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
 	apt-get install --no-install-recommends -y \
-	ca-certificates cron \
+	ca-certificates cron git vim \
 	apache2 libapache2-mod-php \
 	libapache2-mod-auth-openidc \
 	php-curl php-gmp php-intl php-mbstring php-xml php-zip \
@@ -20,8 +20,9 @@ RUN rm -f /var/log/apache2/error.log && ln -s /dev/stderr /var/log/apache2/error
 
 #WORKDIR /var/www/FreshRSS
 
-COPY . /var/www/FreshRSSORIG
-COPY ./Docker/*.Apache.conf /etc/apache2/sites-available/
+RUN git clone -b 1.24.3 https://github.com/FreshRSS/FreshRSS.git
+COPY ./FreshRSS/ /var/www/FreshRSSORIG
+COPY ./FreshRSS/Docker/*.Apache.conf /etc/apache2/sites-available/
 
 ARG FRESHRSS_VERSION
 ARG SOURCE_COMMIT
