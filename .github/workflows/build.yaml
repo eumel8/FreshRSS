@@ -6,6 +6,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: MyAlbum/purge-cache@v1
+        with:
+        max-age: 1
       - name: Checkout Repo
         uses: actions/checkout@v2
       - name: Install Cosign
