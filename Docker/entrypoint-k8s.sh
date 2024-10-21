@@ -6,6 +6,7 @@
 #export APACHE_LOCK_DIR=/apache/run/apachelock
 #export APACHE_LOG_DIR=/apache/run/apachelogs
 
+export OIDC_CLAIM="${OIDC_CLAIM:-valid-user}"
 export OIDC_SESSION_INACTIVITY_TIMEOUT="${OIDC_SESSION_INACTIVITY_TIMEOUT:-300}"
 export OIDC_SESSION_MAX_DURATION="${OIDC_SESSION_MAX_DURATION:-27200}"
 export OIDC_SESSION_TYPE="${OIDC_SESSION_TYPE:-server-cache}"
